@@ -9,7 +9,7 @@
 ## 🧑‍💻 Group Members
 
 - João Francisco Hirtenkauf Munhoz – 00275634
-- Nome - Cartao
+- Luís Antônio Mikhail Dawa - 00313853
 - Nome - Cartao
 
 ---
