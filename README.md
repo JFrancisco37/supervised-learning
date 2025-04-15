@@ -28,11 +28,11 @@ Implementation of linear regression using gradient descent to predict farm price
 
 **Best parameters**:
 - Initial values:  
-  `b = ...`  
-  `w = ...`  
-- Learning rate (`alpha`): `...`  
-- Number of iterations: `...`  
-- Final MSE: `...`
+  `b = 0`  
+  `w = 0`  
+- Learning rate (`alpha`): `0.01`  
+- Number of iterations: `100`  
+- Final MSE: `9.627438022234974`
 
 ---
 
