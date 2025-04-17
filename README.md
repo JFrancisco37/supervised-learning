@@ -67,35 +67,67 @@ For each dataset, we tested at least 5 different configurations. Below we summar
 
 ### Dataset Complexity Ranking (from easiest to hardest)
 
-1. MNIST – simple grayscale digits, low intra-class variation.  
-2. Fashion MNIST – slightly more complex due to shape similarity.  
-3. CIFAR-10 – color images with more visual complexity.  
-4. CIFAR-100 – high number of classes and small image size makes classification harder.
+1. MNIST – simple grayscale digits, low intra-class variation. We were able to get good accuracy in the first try with a simple MLP. 
+2. Fashion MNIST – slightly more complex due to shape similarity, but we were still able to get a good accuracy in the first try with a simple MLP.
+3. CIFAR-10 – color images with more visual complexity. Using a CNN made the accuracy go up
+4. CIFAR-100 – high number of classes and small image size makes classification harder. Just using a CNN was not enugh. We had to add multiple layers with more complex functions for the accuracy to go above 50%.
 
 ### Best Accuracies and Observations
 
-- **MNIST**: XX% – Improved with 2 dense layers and ReLU activation.  
-- **Fashion MNIST**: XX% – Batch normalization helped.  
-- **CIFAR-10**: XX% – Convolutional layers improved performance.  
-- **CIFAR-100**: XX% – Performance improved with dropout and deeper CNNs.
+**MNIST**: Accuracy 94.97%; Time 85.05s;
+The network has 3 layers:
+- Flatten Layer: Converts the 2D 28×28 pixel image into a 1D vector of 784 elements (28 × 28 = 784).
+- Dense Layer 1: A fully connected layer with 128 neurons and ReLU activation, which helps the network learn non-linear patterns.
+- Dense Layer 2: A fully connected layer with 10 neurons, one for each digit class (0–9) and Softmax activation, which turns the outputs into probabilities that sum to 1.  
+
+**Fashion MNIST**: Accuracy 83.04%; Time 96.50s;
+We used the same configuration as before and it worked well enough
+The network has 3 layers:
+- Flatten Layer: Converts the 2D 28×28 pixel image into a 1D vector of 784 elements (28 × 28 = 784).
+- Dense Layer 1: A fully connected layer with 128 neurons and ReLU activation, which helps the network learn non-linear patterns.
+- Dense Layer 2: A fully connected layer with 10 neurons, one for each digit class (0–9) and Softmax activation, which turns the outputs into probabilities that sum to 1.  
+
+
+**CIFAR-10**: Accuracy 56.66%; Time 402.34s  
+Convolutional layers improved performance significantly compared to dense-only models.  
+The network has 5 layers:
+- **Conv2D Layer 1**: 32 filters of size 3×3 with ReLU activation, extracts local features from the 32×32 RGB images.
+- **MaxPooling2D**: Downsamples feature maps, reducing dimensionality and helping with translation invariance.
+- **Flatten Layer**: Converts the pooled feature maps into a 1D vector.
+- **Dense Layer 1**: A fully connected layer with 64 neurons and ReLU activation.
+- **Dense Layer 2**: A fully connected layer with 10 neurons and Softmax activation for classification.
 
 ---
+
+**CIFAR-100**: Accuracy 51.13%; Time 10212.84s  
+Performance improved with dropout, batch normalization, and a deeper CNN architecture.  
+The network has multiple convolutional blocks followed by fully connected layers:
+- **Conv2D Block 1**: Two 64-filter convolutional layers (3×3, 'same' padding) with ReLU and batch normalization.
+- **MaxPooling2D**: Reduces spatial dimensions; followed by a Dropout (0.25) to reduce overfitting.
+- **Conv2D Block 2**: Two 128-filter convolutional layers (3×3, 'same' padding) with ReLU and batch normalization.
+- **MaxPooling2D**: Another downsampling layer; followed by Dropout (0.25).
+- **Flatten Layer**: Converts the feature maps into a flat vector.
+- **Dense Layer 1**: A fully connected layer with 512 neurons, ReLU, batch normalization, and Dropout (0.5).
+- **Dense Layer 2**: Final output layer with 100 neurons and Softmax activation for classification across 100 classes.
+---
+
 
 ## 🛠️ Extra Techniques Used
 
-- Feature normalization in linear regression  
-- Dropout in CNNs  
-- Batch normalization  
-- Learning rate scheduling (optional)  
+- **Feature normalization** (in linear regression task)
+- **Dropout**: Helps prevent overfitting in deeper CNNs by randomly deactivating neurons during training.
+- **Batch Normalization**: Stabilizes and accelerates training by normalizing layer inputs.
 
 ---
 
+
 ## ⚙️ Requirements
 
-- Python 3.12  
-- Libraries: `numpy`, `pandas`, `tensorflow==2.18`, `numba`  
-- Other libraries (if any):  
-  - `...`
+- **Python** 3.12  
+- **Libraries**:
+  - `tensorflow==2.18.0`
+  - `matplotlib`
+
 
 ---
 
@@ -106,7 +138,6 @@ For each dataset, we tested at least 5 different configurations. Below we summar
 - `alegrete.csv`
 - `Trabalho_redes_neurais.ipynb`
 - `README.md`
-- Any additional source code (if applicable)
 
 ---
 
