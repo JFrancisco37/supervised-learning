@@ -70,7 +70,7 @@ For each dataset, we tested at least 5 different configurations. Below we summar
 1. MNIST – simple grayscale digits, low intra-class variation. We were able to get good accuracy in the first try with a simple MLP. 
 2. Fashion MNIST – slightly more complex due to shape similarity, but we were still able to get a good accuracy in the first try with a simple MLP.
 3. CIFAR-10 – color images with more visual complexity. Using a CNN made the accuracy go up
-4. CIFAR-100 – high number of classes and small image size makes classification harder. Just using a CNN was not enugh. We had to add multiple layers with more complex functions for the accuracy to go above 50%.
+4. CIFAR-100 – high number of classes and more complex object variations makes classification harder. Just using a CNN was not enugh. We had to add multiple layers with more complex functions for the accuracy to go above 50%.
 
 ### Best Accuracies and Observations
 
